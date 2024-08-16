@@ -1,0 +1,37 @@
+
+<style>
+    .social-media-icons {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.social-media-icons a {
+    color: #333; /* Color de los iconos */
+    transition: color 0.3s;
+}
+
+.social-media-icons a:hover {
+    color: #007bff; /* Color al pasar el mouse */
+}
+
+</style>
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <h3 class="col-12 display-6 fs-5 text-center">Siguenos en nuestras redes sociales</h3>
+        <div class="col d-flex justify-content-center gap-3 mt-3">
+           
+            
+                {% for profile in social_profiles %}
+                    
+                <a href="{{ profile.url }}" target="_blank">
+                    <i class="fab {{ profile.icon }} fa-2x" style="color: #333;"></i> <!-- Usando Font Awesome -->
+                </a>
+                    
+                {% endfor %}
+            
+        </div>
+    </div>
+</div>

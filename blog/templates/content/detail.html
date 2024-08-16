@@ -1,0 +1,45 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+<script src="{% static 'tinymce_setup.js' %}"></script>
+
+{% block content %}
+
+<style>
+    .content img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        object-fit: cover;
+    }
+</style>
+
+<div class="container mt-4 pt-5">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div>
+                <h1 class="display-5 fs-1 my-5 text-center">{{ quillpost.title }}</h1>
+            </div>
+            <!-- Contenido -->
+            <div class="content">
+                    {{ quill_content_html | safe }}
+            </div>
+
+            <!-- Incluir el formulario de suscripción -->
+            {% include 'content_forms/subscription/subscribe.html' %}
+        </div>
+        
+    </div>
+
+
+</div>
+
+<div>
+    {% include 'content/social_networks.html' %}
+</div>
+
+{% include 'content/show_posts.html' %}
+
+
+{% endblock %}
+

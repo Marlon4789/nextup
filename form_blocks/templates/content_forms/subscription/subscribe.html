@@ -1,0 +1,61 @@
+<!-- subscribe.html -->
+
+<style>
+    .email-input {
+        border: 2px solid #28a745; /* Borde verde */
+        border-radius: 5px;
+        padding: 10px;
+        min-width: 18rem;
+        font-size: 1rem;
+        background-color: #f8faf9; /* Fondo claro */
+        color: #495057; /* Color del texto */
+    }
+    .email-input:focus {
+    border-color: #218838; /* Borde verde más oscuro cuando está enfocado */
+    box-shadow: 0 0 4px rgba(33, 136, 56, 0.5); /* Sombra verde */
+    outline: none; /* Quitar el outline por defecto */
+}
+</style>
+
+<div class="container d-flex justify-content-center pt-3 mt-5" style="background-color: rgb(232, 231, 230);border-radius: 3px;">
+    <div class="row">
+        <div class="p-2">
+            <h3 class="display-6 fs-5 text-center">Suscríbete para estar al tanto de nuevos artículos.</h3>
+            <form class="col-6 my-3" id="subscription-form" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success"style="border-radius: 3px;">Suscribirse</button>
+            </form>
+            <div id="response-message"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#subscription-form').on('submit', function(event) {
+            event.preventDefault(); // Evitar el comportamiento por defecto del formulario
+            
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function(response) {
+                    if (response.success) {
+                        $('#response-message').html('<div class="alert alert-success">' + response.message + '</div>');
+                        $('#subscription-form')[0].reset(); // Limpiar el formulario
+                        
+                        // Ocultar el mensaje de éxito después de 2 segundos
+                        setTimeout(function() {
+                            $('#response-message').fadeOut();
+                        }, 3000);
+                    }
+                },
+                error: function() {
+                    $('#response-message').html('<div class="alert alert-danger">Hubo un error al enviar el formulario.</div>');
+                }
+            });
+        });
+    });
+</script>

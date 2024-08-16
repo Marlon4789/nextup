@@ -1,0 +1,32 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<img width="100%" class="img-fluid mt-5 d-none d-md-block" src="https://cerulean-attention-6af.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F1924e68b-692f-46fc-bf0e-923678684a30%2Fc570e2a6-4653-4ea5-b1e7-fe1bb98fef03%2FGroup_3(8).png?table=block&id=0d6bc9f7-e542-4e87-8096-28883b104706&spaceId=1924e68b-692f-46fc-bf0e-923678684a30&width=1420&userId=&cache=v2" alt="Portada">
+<main class="container-fluid mt-5">
+    
+    <div class="row">
+        <div class="col-md-8 offset-md-2 d-column mt-2 text-center">
+ 
+             <div class="col-md-10 offset-md-1 text-center mt-4">
+                 <h1 class="display-6 fs-3">Bienvenido a Nextup, un sitio para aprender de tecnología y estar informado sobre el sector TI</h1>
+             </div>
+             
+ 
+            
+    </div>
+    
+</main>
+
+{% include 'content/show_posts.html' %}
+
+<div class="mx-auto" style="max-width: 41.5rem; border-radius: 4px;">
+    <!-- Incluir el formulario de suscripción -->
+{% include 'content_forms/subscription/subscribe.html' %}
+</div>
+
+<div>
+    {% include 'content/social_networks.html' %}
+</div>
+
+{% endblock %}
