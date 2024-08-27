@@ -6,7 +6,7 @@ from django.db import models
 class SocialMediaProfile(models.Model):
     ICON_CHOICES = [
         ('fa-facebook', 'Facebook'),
-        ('fa-twitter', 'Twitter'),
+        ('fa-x-twitter', 'X'), 
         ('fa-instagram', 'Instagram'),
         ('fa-linkedin', 'LinkedIn'),
         ('fa-youtube', 'YouTube'),

@@ -5,7 +5,7 @@
         border: 2px solid #28a745; /* Borde verde */
         border-radius: 5px;
         padding: 10px;
-        min-width: 18rem;
+        min-width: 17rem;
         font-size: 1rem;
         background-color: #f8faf9; /* Fondo claro */
         color: #495057; /* Color del texto */
@@ -17,11 +17,11 @@
 }
 </style>
 
-<div class="container d-flex justify-content-center pt-3 mt-5" style="background-color: rgb(232, 231, 230);border-radius: 3px;">
+<div class="container-fluid d-flex justify-content-center pt-3 mt-5" style="background-color: rgba(230, 230, 230, 0.835);border-radius: 3px;">
     <div class="row">
         <div class="p-2">
-            <h3 class="display-6 fs-5 text-center">Suscríbete para estar al tanto de nuevos artículos.</h3>
-            <form class="col-6 my-3" id="subscription-form" method="post">
+            <h4 class="display-6 fs-5 text-center">Suscríbete para estar al tanto de nuevos artículos.</h4>
+            <form class="my-3" id="subscription-form" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" class="btn btn-success"style="border-radius: 3px;">Suscribirse</button>

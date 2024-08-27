@@ -1,21 +1,30 @@
 {% load static %}
 {% block content %}
 
-    <div class="container pt-4 mt-4">
-      <h4 class="display-6 fs-4 text-center">Escoge un post para ver</h4>
+  <style>
+    .box-shadow {
+      box-shadow: 2px 3px 5px rgba(18, 18, 18, 0.1);
+    }
+    .image {
+      object-fit: cover;
+    }
+  </style>
+
+<div class="container pt-4 mt-4">
+      <h4 class="display-6 fs-5 text-center mb-4">Ver articulos</h4>
         <div class="row">
             {% for post in quill_posts %}
             <div class="col-md-8 offset-md-2">
                 <div class="card mb-3 border-1 mx-auto" style="border-radius: 0%;">
-                    <div class="row g-0">
+                    <div class="row g-0 box-shadow">
                       <div class="col-md-4 d-flex">
                         <img src="{{ post.image.url }}" class="img-fluid" style="object-fit: cover;" alt="{{ post.title }}">
                       </div>
                       <div class="col-md-8 position-relative">
-                        <div class="card-body" style="height: 9rem;">
-                          <h6 class="mt-2">{{ post.title }}</h6>
-                          <a href="{% url 'detail' quillpost_id=post.id %}" class="link-success link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover mb-3">{{ post.description }}</a>
-                          <p class="card-text position-absolute bottom-0 start-3"><small class="text-body-secondary">{{ post.date }}</small></p>
+                        <div class="card-body" style="min-height: 9rem;">
+                          <h6 class="display-6 fs-6">{{ post.title | title }}</h6>
+                          <a href="{% url 'detail' quillpost_id=post.id %}" class="link-success link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover">{{ post.description }}</a>
+                          <p class="card-text position-absolute bottom-0 start-3 mb-md-3"><small class="text-body-secondary" style="font-size:smaller;">{{ post.date }}</small></p>
                           
                         </div>
                       </div>
@@ -24,6 +33,6 @@
             </div>
             {% endfor %}
         </div>
-    </div>
+
 
 {% endblock %}
